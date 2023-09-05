@@ -14,7 +14,12 @@ git clone https://github.com/microsoft/SoftTeacher.git
 
 4. Create a data directory for further processing. 
 ```
-mkdir data
+mkdir data && mkdir output
+```
+
+5. Visualize the training log result with: 
+```
+python analyze_logs.py plot_curve runner/baseline.json --keys sup_acc unsup_acc
 ```
 
 Notes:

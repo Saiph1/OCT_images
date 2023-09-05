@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# A trivial example of the overall scale factor for rescale operation 
+
 def main(): 
     s= 0.9 
     data = np.ones(1000)

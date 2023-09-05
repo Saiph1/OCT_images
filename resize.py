@@ -16,6 +16,10 @@ from ssod.apis.inference import init_detector, save_result
 from ssod.utils import patch_config
 from collections import Counter
 
+# This script reposition and remap the OCT image content after the concatenation. 
+# A completed, repaired OCT image should have 3 struts each occupying 4/360 portion of the whole image. 
+# Normal areas separated by the struts (assuming 4 in total) should add up to (360-4*3)/360. 
+
 def main():
     # build the model from a config file and a checkpoint file
     # imgs = sorted(glob.glob(args.img+"/*"))
@@ -34,7 +38,6 @@ def main():
     # build the model from a config file and a checkpoint file
     model = init_detector(cfg, "data/0722iter_86000.pth", device="cpu")
     model.eval()
-    # model_ann = []
     count = 0
     for img in imgs:
         count +=1

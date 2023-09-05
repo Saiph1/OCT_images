@@ -9,6 +9,9 @@ from ssod.utils import patch_config
 import math
 import cv2
 
+# This script is used to produce all the quantitative measurement for an OCT image, which is then written in a txt file. 
+# i.e. High/Low frequency errors, names, original size, and processed size. (after the rescale operation)
+
 imgs = sorted(glob.glob("../../test_dis/final_project/Bend-insensitive/2023-01-06/rat_trachea_S40_R20/rat_03_2023-01-06_00000/*.png"))
 print("Length of the images: ", len(imgs))
 # print("order: ", imgs)

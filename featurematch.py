@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 from skimage.metrics import structural_similarity as ssim
 import math  
 
+# An attempt to produce the correlation of % difference in standard width 
+# of an OCT image and the feature matching score with its template. 
+# Not very effective..
+
 def main() : 
     path = "../../test_dis/feature_matching/"
     match = cv2.imread(path +"angular_scanning/90-360/90 copy.png")

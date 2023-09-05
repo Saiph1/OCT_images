@@ -9,6 +9,9 @@ from ssod.utils import patch_config
 import math
 import cv2
 
+# This script calculates the low frequency error with the help of pretrained model, 
+# which is used for detecting the position of the struts. 
+
 path = "../../test_dis/final_project/Bend-insensitive/2023-01-06/rat_trachea_S40_R20/rat_03_2023-01-06_00000"
 imgs = sorted(glob.glob(path+"/*.png"))
 print("Length of the images: ", len(imgs))

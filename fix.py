@@ -1,6 +1,3 @@
-# Modified from mmdetection/demo/image_demo.py
-# This script rescales the NURD region presented in an OCT image, such that oversampled information could be down-scaled.
-# modify the path with your path to the OCT data
 import glob
 import cv2
 import numpy as np
@@ -8,6 +5,11 @@ from mmcv import Config
 from mmdet.apis import inference_detector
 from ssod.apis.inference import init_detector
 from ssod.utils import patch_config
+
+# Modified from mmdetection/demo/image_demo.py
+# This script rescales the NURD region presented in an OCT image, such that oversampled information could be down-scaled.
+# modify the path with your path to the OCT data
+# A script for iterative restoration of the NURD oct image.
 
 path = "./data"
 output_path = "./output/"

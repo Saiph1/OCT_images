@@ -52,7 +52,7 @@ def plot_curve(log_dicts, args):
     num_metrics = len(metrics)
     for i, log_dict in enumerate(log_dicts):
         epochs = list(log_dict.keys())
-        print(epochs)
+        # print(epochs)
         # print(log_dict[epoch]['iter'])
         for j, metric in enumerate(metrics):
             print(f'plot curve of {args.json_logs[i]}, metric is {metric}')
@@ -83,9 +83,9 @@ def plot_curve(log_dicts, args):
                     iters = log_dict[epoch]['iter']
                     if log_dict[epoch]['mode'][-1] == 'val':
                         iters = iters[:-1]    
-                    print(epoch)                    
+                    # print(epoch)                    
                     xs.append((epoch))
-                    print((log_dict[epoch][metric][0]))
+                    # print((log_dict[epoch][metric][0]))
                     ys.append((log_dict[epoch][metric][0]))
                 # xs = np.concatenate(xs)
                 # ys = np.concatenate(ys)

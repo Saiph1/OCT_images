@@ -330,4 +330,3 @@ cv2.destroyAllWindows()
 # plt.imshow(result)
 # plt.axis('off')
 # plt.show()
-region_size_w

@@ -5,15 +5,14 @@ from mmcv import Config
 from mmdet.apis import async_inference_detector, inference_detector, show_result_pyplot
 from ssod.apis.inference import init_detector, save_result
 from ssod.utils import patch_config
-# adding resize operations:
-# imgs = sorted(glob.glob("../../test_dis/result/in_vivo_mouse_colon_R10fps_S20fps/*"))
-path = "../../test_dis/3D/"
+
+# 
+path = "./data/"
 imgs = sorted(glob.glob(path +"*.png"))
 print("length = ", len(imgs))
 imgs = imgs[330:]
 
 score_thr = 0.3
-# cfg = Config.fromfile("data/soft_teacher_faster_rcnn_r50_caffe_fpn_coco_180k.py")
 cfg = Config.fromfile("data/0722.py")
 # Not affect anything, just avoid index error
 cfg.work_dir = "./work_dirs"
