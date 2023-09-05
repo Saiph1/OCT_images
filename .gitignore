@@ -1,0 +1,8 @@
+SoftTeacher
+data
+network_predict.png
+output
+runner/*.json
+speckle_equalization/*.png
+!runner/baseline.json
+*.pth
