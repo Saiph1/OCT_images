@@ -1,16 +1,27 @@
 # OCT_images
 OCT image application
 
-1. clone this repo and the Soft-Teacher repo:
+Getting started:
+
+1. Install required library: 
 ```
 git clone https://github.com/microsoft/SoftTeacher.git
+conda create --name oct_image python=3.8 
+conda activate oct_image
+# CUDA 10.2
+# conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c pytorch
+# CUDA 11.3
+conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=11.3 -c conda-forge
+make install
 ```
-2. pip install required library for Soft-Teacher:
+2. 
 ```
-// To do
-```
-3. Download the dataset via:
 
+```
+3. Download the training/val dataset via:
+
+Link: https://pan.baidu.com/s/1bSFuoaaKyJssQ2kwvTk3-Q?pwd=vyax 
+Code: vyax
 
 4. Create a data directory for further processing. 
 ```
@@ -19,7 +30,7 @@ mkdir data && mkdir output
 
 5. Visualize the training log result with: 
 ```
-python analyze_logs.py plot_curve runner/baseline.json --keys sup_acc unsup_acc
+python analyze_logs.py plot_curve log/baseline.json --keys sup_acc unsup_acc
 ```
 
 Notes:
