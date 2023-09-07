@@ -1,6 +1,6 @@
 # Getting started:
 
-1. Install required library: 
+1. Environments/Library setup: 
 ```
 conda create --name oct_image python=3.7
 conda activate oct_image
