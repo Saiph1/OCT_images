@@ -6,19 +6,20 @@ from mmdet.apis import async_inference_detector, inference_detector, show_result
 from ssod.apis.inference import init_detector, save_result
 from ssod.utils import patch_config
 
-# 
+config_path = "./config.py"
+model_path = "./iter_124000.pth"
 path = "./data/"
 imgs = sorted(glob.glob(path +"*.png"))
 print("length = ", len(imgs))
 imgs = imgs[330:]
 
 score_thr = 0.3
-cfg = Config.fromfile("data/0722.py")
+cfg = Config.fromfile(config_path)
 # Not affect anything, just avoid index error
 cfg.work_dir = "./work_dirs"
 cfg = patch_config(cfg)
 # build the model from a config file and a checkpoint file
-model = init_detector(cfg, "data/0722iter_124000.pth", device="cpu")
+model = init_detector(cfg, model_path, device="cpu")
 model.eval()
     
 for i, img in enumerate(imgs):
@@ -98,5 +99,5 @@ for i, img in enumerate(imgs):
     # cv2.imwrite(path + "/rescale_"+img[-13:], cv_img2[:,:,0])
     # print(new.shape)
     print("Number: {:05d}".format(int(i/2)))
-    cv2.imwrite(path+"rescale/"+"{:05d}.oct.png".format(int(i/2)), cv_img2[:,:,0])
+    cv2.imwrite("./rescale/"+"{:05d}.oct.png".format(int(i/2)), cv_img2[:,:,0])
     print("Done storing image ({:05d}.oct.png)".format(int(i/2)))
