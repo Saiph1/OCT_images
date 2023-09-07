@@ -1,7 +1,4 @@
-# OCT_images
-OCT image application
-
-Getting started:
+# Getting started:
 
 1. Install required library: 
 ```
@@ -20,9 +17,8 @@ make install
 ```
 cd SoftTeacher && mkdir data && cd data
 ```
-3. Download the training/val dataset via:
+3. Download the training/val dataset via [Here](https://pan.baidu.com/s/1bSFuoaaKyJssQ2kwvTk3-Q?pwd=vyax)
 
-Link: https://pan.baidu.com/s/1bSFuoaaKyJssQ2kwvTk3-Q?pwd=vyax 
 Code: vyax
 
 4. Extract data and make sure the route looks like:
@@ -40,7 +36,7 @@ Code: vyax
 #       unlabel.json
 ```
 
-Training:
+# Training:
 
 - Train the model using the mmdetection library with Soft teacher (semi-supervised learning): 
     1. Modify the config. 
@@ -99,23 +95,39 @@ Training:
     ```
     at /oct_images
     
-Image post-processing: 
+# Image post-processing: 
 - Create a data directory for further processing. 
 ```
 mkdir data && mkdir output
 ```
 - Iterative restoration: 
-    1. Modify path to trained model and config file: 
+    1. Modify path to trained model and config file in fix.py : 
     ```
     config_path = "./SoftTeacher/work_dir/{name of the training session}/{config file name}.py"
     model_path = "./SoftTeacher/work_dir/{name of the training session}/iter_{latest model}.pth"
     ```
-    2. 
+    2. run command: 
     ```
     python fix.py
     ``` 
     3. The output will be the repair version of original images presented in data folder
 
+- Concatenate and redistribute oct content with struts positions:
+    1. Modify path to trained model and config file:
+    ```
+    config_path = "./config.py"
+    model_path = "./iter_124000.pth"
+    ```
+    The above files could be downloaded from the baidu cloud link [Here.](https://pan.baidu.com/s/1bSFuoaaKyJssQ2kwvTk3-Q?pwd=vyax)
 
-To Do list: 
+    2. create new folder:
+    ```
+    mkdir rescale
+    ```
+    3. run with:
+    ```
+    python cat2.py
+    ```
+
+# To Do list: 
 - Speckle equalization
