@@ -58,14 +58,12 @@ Code: vyax
         workers_per_gpu=5,
         train=dict(
             sup=dict(
-                # type="CocoDataset",
                 type="CocoDataset",
                 ann_file="data/oct/annotations/semi/train_label.json",
                 img_prefix="data/oct/train/",
                 classes=CLASSES,
             ),
             unsup=dict(
-                # type="CocoDataset",
                 type="CocoDataset",
                 ann_file="data/oct/annotations/semi/unlabel.json",
                 img_prefix="data/oct/train/",
