@@ -97,13 +97,24 @@ Training:
     ```
     python analyze_logs.py plot_curve log/baseline.json --keys sup_acc unsup_acc
     ```
+    at /oct_images
     
 Image post-processing: 
-1. Create a data directory for further processing. 
+- Create a data directory for further processing. 
 ```
 mkdir data && mkdir output
 ```
-
+- Iterative restoration: 
+    1. Modify path to trained model and config file: 
+    ```
+    config_path = "./SoftTeacher/work_dir/{name of the training session}/{config file name}.py"
+    model_path = "./SoftTeacher/work_dir/{name of the training session}/iter_{latest model}.pth"
+    ```
+    2. 
+    ```
+    python fix.py
+    ``` 
+    3. The output will be the repair version of original images presented in data folder
 
 
 To Do list: 
