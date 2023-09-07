@@ -23,25 +23,33 @@ Code: vyax
 
 4. Extract data and make sure the route looks like:
 ```
-# oct/
-#  train/
-#     *.png
-#       .
-#       .
-#       .
-#  annotations/
-#     semi/
-#       train_val.json
-#       train_label.json
-#       unlabel.json
+# SoftTeacher/
+#  data/
+#   oct/
+#    train/
+#       *.png
+#         .
+#         .
+#         .
+#    annotations/
+#       semi/
+#         train_val.json
+#         train_label.json
+#         unlabel.json
 ```
 
 # Training:
 
 - Train the model using the mmdetection library with Soft teacher (semi-supervised learning): 
-    1. Modify the config. 
+    1. Modify the config of your choices.
+       
     config file1 (baseline): SoftTeacher/configs/soft_teacher/base.py
-
+    - img_scale (that matches the GPU memory)
+    - cancel random flip
+    - scale in x direction
+    - keep ratio = false
+    - ...
+  
     config file2: SoftTeacher/configs/soft_teacher/soft_teacher_faster_rcnn_r50_caffe_fpn_coco_180k.py
     ```
     CLASSES = ['d1','d2']
@@ -86,15 +94,13 @@ Code: vyax
     cd SoftTeacher/ 
     bash tools/dist_train_partially.sh semi 1 5 1
     ```
-    The results and checkpoints will be stored at SoftTeacher/work_dir
+    The results and checkpoints will be stored at SoftTeacher/work_dir/{name of the training session}
   
-    3. Visualize the training log result with (example):
+    3. Visualize the training log result with (example at /oct_images):
        
     ```
     python analyze_logs.py plot_curve log/baseline.json --keys sup_acc unsup_acc
     ```
-    at /oct_images
-    
 # Image post-processing: 
 - Create a data directory for further processing. 
 ```
@@ -120,7 +126,7 @@ mkdir data && mkdir output
     ```
     The above files could be downloaded from the baidu cloud link [Here.](https://pan.baidu.com/s/1bSFuoaaKyJssQ2kwvTk3-Q?pwd=vyax)
 
-    2. create new folder:
+    2. create new folder to store the processed images:
     ```
     mkdir rescale
     ```
