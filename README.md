@@ -45,23 +45,66 @@ Training:
 - Train the model using the mmdetection library with Soft teacher (semi-supervised learning): 
     1. Modify the config. 
     config file1 (baseline): SoftTeacher/configs/soft_teacher/base.py
+
     config file2: SoftTeacher/configs/soft_teacher/soft_teacher_faster_rcnn_r50_caffe_fpn_coco_180k.py
-    ```# note that config file 2 imports baseline module.
     ```
-    3. train with 
+    CLASSES = ['d1','d2']
+    data = dict(
+        samples_per_gpu=5,
+        workers_per_gpu=5,
+        train=dict(
+            sup=dict(
+                # type="CocoDataset",
+                type="CocoDataset",
+                ann_file="data/oct/annotations/semi/train_label.json",
+                img_prefix="data/oct/train/",
+                classes=CLASSES,
+            ),
+            unsup=dict(
+                # type="CocoDataset",
+                type="CocoDataset",
+                ann_file="data/oct/annotations/semi/unlabel.json",
+                img_prefix="data/oct/train/",
+                classes=CLASSES,
+            ),
+        ),
+        val=dict(
+            ann_file="data/oct/annotations/semi/train_val.json",
+            img_prefix="data/oct/train/",
+            classes=CLASSES,
+        ),
+    
+        sampler=dict(
+            train=dict(
+                sample_ratio=[1, 4],
+            )
+        ),
+    )
+    #    .
+    #    .
+    #    .
+    ```
+    2. train with
+
     ``` 
     cd SoftTeacher/ 
     bash tools/dist_train_partially.sh semi 1 5 1
     ```
-- Speckle equalization still needs to be improved.
-
+    The results and checkpoints will be stored at SoftTeacher/work_dir
+  
+    3. Visualize the training log result with (example):
+       
+    ```
+    python analyze_logs.py plot_curve log/baseline.json --keys sup_acc unsup_acc
+    ```
+    
 Image post-processing: 
 1. Create a data directory for further processing. 
 ```
 mkdir data && mkdir output
 ```
 
-2. Visualize the training log result with: 
-```
-python analyze_logs.py plot_curve log/baseline.json --keys sup_acc unsup_acc
-```
+
+
+To Do list: 
+- Speckle equalization
