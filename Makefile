@@ -4,9 +4,8 @@ pre:
 	python -m pip install -r requirements.txt
 	git clone https://github.com/open-mmlab/mmdetection.git
 	cd mmdetection && git checkout v2.28.1 && python -m pip install -e .
-	pip install mmcv-full=1.7.1
+	pip install mmcv-full==1.7.1
 install:
 	make pre
-	cd SoftTeacher
-	python -m pip install -e .
-
+	git clone https://github.com/microsoft/SoftTeacher.git
+	pip install -v -e ./SoftTeacher

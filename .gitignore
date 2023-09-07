@@ -6,3 +6,4 @@ runner/*.json
 speckle_equalization/*.png
 !runner/baseline.json
 *.pth
+mmdetection

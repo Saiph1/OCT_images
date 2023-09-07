@@ -5,9 +5,9 @@ Getting started:
 
 1. Install required library: 
 ```
-git clone https://github.com/microsoft/SoftTeacher.git
 conda create --name oct_image python=3.8 
 conda activate oct_image
+# Please refer to https://pytorch.org/get-started/previous-versions/ for more detail (pytorch==1.9.0 torchvision==0.10.0)
 # CUDA 10.2
 # conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c pytorch
 # CUDA 11.3
