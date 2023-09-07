@@ -2,7 +2,7 @@
 
 1. Install required library: 
 ```
-conda create --name oct_image python=3.8 
+conda create --name oct_image python=3.7
 conda activate oct_image
 ```
 For CUDA>11.3 (pytorch==1.9.0 torchvision==0.10.0): 
