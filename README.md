@@ -99,6 +99,12 @@ Code: vyax
     ```
     python analyze_logs.py plot_curve log/baseline.json --keys sup_acc unsup_acc
     ```
+
+    4. To test the model performance in AR/AP metrics: 
+    ```
+    bash tools/dist_test.sh work_dirs/{project name}/5/1/{config name}.py work_dirs/{project name}/5/1/latest.pth 1 --eval proposal --cfg-options model.test_cfg.rcnn.score_thr=0.5
+    ```
+    
 # Image post-processing: 
 - Create a data directory for further processing. 
 ```
