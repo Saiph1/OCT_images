@@ -138,6 +138,3 @@ mkdir data && mkdir output
     ```
     python cat2.py
     ```
-
-# To Do list: 
-- Speckle equalization
