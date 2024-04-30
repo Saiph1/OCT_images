@@ -128,7 +128,7 @@ mkdir data && mkdir output
     config_path = "./config.py"
     model_path = "./iter_124000.pth"
     ```
-    The above files could be downloaded from the baidu cloud link [Here.](https://pan.baidu.com/s/1bSFuoaaKyJssQ2kwvTk3-Q?pwd=vyax)
+    If you need the above pre-trained network model parameters files, please contact the author for more information. Thank you. 
 
     2. create new folder to store the processed images:
     ```
